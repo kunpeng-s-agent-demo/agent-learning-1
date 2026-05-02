@@ -1,17 +1,18 @@
 import re
 import os
-import re
 from model import OpenAICompatibleClient
 from prompt import AGENT_SYSTEM_PROMPT
 from tools.search_attraction import available_tools
+import sys
+sys.stdout.reconfigure(encoding='utf-8')
 # --- 1. 配置LLM客户端 ---
 # 请根据您使用的服务，将这里替换成对应的凭证和地址
 API_KEY = "YOUR_API_KEY"
-BASE_URL = "YOUR_BASE_URL"
-MODEL_ID = "YOUR_MODEL_ID"
-TAVILY_API_KEY="YOUR_Tavily_KEY"
+BASE_URL = "https://api.deepseek.com"
+MODEL_ID = "deepseek-v4-flash"
+TAVILY_API_KEY="YOUR_TAVILY_API_KEY"
 if not os.environ.get("TAVILY_API_KEY"):
-    os.environ['TAVILY_API_KEY'] = "YOUR_TAVILY_API_KEY"
+    os.environ['TAVILY_API_KEY'] = TAVILY_API_KEY
 
 llm = OpenAICompatibleClient(
     model=MODEL_ID,
